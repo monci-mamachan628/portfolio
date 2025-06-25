@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import.meta.env.BASE_URL;
 import {
   FaChevronDown,
   FaChevronRight,
@@ -20,7 +21,8 @@ const projects = [
   {
     emoji: "📉💰",
     title: "Loan Default Detection",
-    image: "/assets/loan.jpg",
+    image: `${import.meta.env.BASE_URL}assets/loan.jpg`,
+
     description:
       "This project uses machine learning to predict the likelihood of a borrower defaulting on a loan.",
     tags: ["Python", "Logistic Regression", "Random Forest", "Pandas", "Sklearn"],
@@ -29,7 +31,8 @@ const projects = [
       
     },
     files: [
-      { name: "loan_model.ipynb", path: "/code/loan_model.ipynb" },
+      { name: "loan_model.ipynb", path: `${import.meta.env.BASE_URL}code/loan_model.ipynb`
+ },
       { name: "README.md", path: "/code/README (2).md" },
     ],
   },
