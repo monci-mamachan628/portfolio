@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import.meta.env.BASE_URL;
 import {
   FaChevronDown,
   FaChevronRight,
@@ -31,15 +30,14 @@ const projects = [
       
     },
     files: [
-      { name: "loan_model.ipynb", path: `${import.meta.env.BASE_URL}code/loan_model.ipynb`
- },
-      { name: "README.md", path: "/code/README (2).md" },
+      { name: "loan_model.ipynb", path: `${import.meta.env.BASE_URL}code/loan_model.ipynb` },
+      { name: "README.md", path: `${import.meta.env.BASE_URL}code/README2.md` },
     ],
   },
   {
     emoji: "🫁🧠",
     title: "Pneumonia Detection from Chest X-Rays",
-    image: "/assets/pneumonia.jpg",
+    image: `${import.meta.env.BASE_URL}assets/pneumonia.jpg`,
     description:
       "Developed a deep learning pipeline to classify pneumonia in chest X-ray images, supporting radiologists.",
     tags: ["Python", "CNN", "Keras", "Pandas", "Medical Imaging"],
@@ -48,14 +46,14 @@ const projects = [
       
     },
     files: [
-      { name: "pneumonia.ipynb", path: "/code/pneumonia.ipynb" },
-      { name: "README.md", path: "/code/README.md" },
+      { name: "pneumonia.ipynb", path: `${import.meta.env.BASE_URL}code/pneumonia.ipynb` },
+      { name: "README.md", path: `${import.meta.env.BASE_URL}code/README.md` },
     ],
   },
   {
     emoji: "🐦📊",
     title: "Tweets Sentiment Analysis Using RNN",
-    image: "/assets/tweets.jpg",
+    image: `${import.meta.env.BASE_URL}assets/tweets.jpg`,
     description:
       "Applies RNN to classify tweet sentiments into positive, negative, or neutral.",
     tags: ["Python", "RNN", "NLP", "TensorFlow"],
@@ -64,14 +62,14 @@ const projects = [
      
     },
     files: [
-      { name: "tweet.ipynb", path: "/code/tweet.ipynb" },
-      { name: "README (3).md", path: "/code/README (3).md" },
+      { name: "tweet.ipynb", path: `${import.meta.env.BASE_URL}code/tweet.ipynb` },
+      { name: "README3.md", path: `${import.meta.env.BASE_URL}code/README3.md` },
     ],
   },
   {
     emoji: "🟪",
     title: "Spotify Advanced SQL Project",
-    image: "/assets/spotify_sql.jpg",
+    image: `${import.meta.env.BASE_URL}assets/spotify_sql.jpg`,
     description:
       "A complex SQL project focusing on advanced querying and optimization using Spotify data.",
     tags: ["SQL", "Query Optimization", "Data Cleaning"],
@@ -79,8 +77,8 @@ const projects = [
       github: "https://github.com/monci-mamachan628/Spotify.git",
     },
     files: [
-      { name: "spotify.sql", path: "/code/spotify.sql" },
-      { name: "README (4).md", path: "/code/README (4).md" },
+      { name: "spotify.sql", path: `${import.meta.env.BASE_URL}code/spotify.sql` },
+      { name: "README4.md", path: `${import.meta.env.BASE_URL}code/README4.md` },
     ],
   },
 ];
@@ -174,7 +172,7 @@ const FileExplorerProjects = () => {
       <div className="flex flex-1 ml-2 overflow-hidden">
         {/* Explorer Panel */}
         <aside className="w-[280px] flex-shrink-0 border-r border-border bg-card px-4 py-4 rounded-tl-lg rounded-bl-lg">
-          <h2 className="text-xl font-bold mb-6 text-purple-400">📁 Projects</h2>
+          <h2 className="text-xl font-bold mb-6 text-purple-400">📁 Projectss</h2>
           <ul className="space-y-2">
             {projects.map((project, idx) => (
               <li key={idx}>

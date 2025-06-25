@@ -4,11 +4,9 @@ import { Home } from "./pages/Home.jsx";
 
 function App() {
   return (
+     
     <HashRouter>
-      <Routes>
-        <Route index element={<Home />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Home />
     </HashRouter>
   );
 }
