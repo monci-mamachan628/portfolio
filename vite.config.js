@@ -4,8 +4,10 @@ import tailwindcss from '@tailwindcss/vite'
 import autoprefixer from 'autoprefixer'
 import path from 'path'
 
+
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/portfolio/',
   plugins: [react(), tailwindcss(), autoprefixer()],
   resolve: {
     alias: {
