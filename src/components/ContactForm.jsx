@@ -1,6 +1,32 @@
+import { useState } from "react";
 import { FaEnvelope, FaUser, FaPaperPlane, FaCommentDots } from "react-icons/fa";
 
 export const ContactForm = () => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent default form behavior
+    const form = e.target;
+
+    fetch("https://formspree.io/f/xrbkokbw", {
+      method: "POST",
+      body: new FormData(form),
+      headers: {
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          setIsSubmitted(true);
+          form.reset(); // Clear form
+          setTimeout(() => setIsSubmitted(false), 5000); // Hide after 5s
+        } else {
+          alert("Oops! Something went wrong.");
+        }
+      })
+      .catch(() => alert("There was a problem submitting the form."));
+  };
+
   return (
     <section id="contact" className="bg-background text-foreground py-10 px-4 md:px-8 lg:px-24">
       <div className="max-w-xl mx-auto bg-muted rounded-2xl p-8 shadow-2xl border border-purple-500">
@@ -11,13 +37,22 @@ export const ContactForm = () => {
           I'm open to exciting data roles and collaborations. Reach out anytime!
         </p>
 
-        <form className="space-y-6">
+        {/* ✅ Success message */}
+        {isSubmitted && (
+          <div className="bg-green-100 text-green-800 p-4 rounded mb-4 text-center border border-green-300">
+            ✅ Thank You for your message! I will get back to you as soon as I can.
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div className="relative">
             <FaUser className="absolute left-3 top-3 text-purple-400" />
             <input
               type="text"
+              name="name"
               placeholder="Your Name"
-              className="w-full pl-10 pr-4 py-3 bg-background border border-purple-500 rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-purple-500"
+              required
+              className="w-full pl-10 pr-4 py-3 bg-background border border-purple-500 rounded-lg"
             />
           </div>
 
@@ -25,17 +60,21 @@ export const ContactForm = () => {
             <FaEnvelope className="absolute left-3 top-3 text-purple-400" />
             <input
               type="email"
+              name="email"
               placeholder="Your Email"
-              className="w-full pl-10 pr-4 py-3 bg-background border border-purple-500 rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-purple-500"
+              required
+              className="w-full pl-10 pr-4 py-3 bg-background border border-purple-500 rounded-lg"
             />
           </div>
 
           <div className="relative">
             <FaCommentDots className="absolute left-3 top-3 text-purple-400" />
             <textarea
+              name="message"
               placeholder="Your Message"
               rows="4"
-              className="w-full pl-10 pr-4 py-3 bg-background border border-purple-500 rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-purple-500"
+              required
+              className="w-full pl-10 pr-4 py-3 bg-background border border-purple-500 rounded-lg"
             ></textarea>
           </div>
 
