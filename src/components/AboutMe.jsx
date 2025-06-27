@@ -27,10 +27,12 @@ export const AboutMe = () => (
       <div className="flex justify-center mt-10">
         <a
           href={`${import.meta.env.BASE_URL}Monci_Mamachan_cv.pdf`}
-          download
-          className="inline-block px-6 py-3 bg-bg-transparent border-2 border-purple-500 rounded-lg p-g-purple-600 transition-colors duration-300">
-            Check out my Resume
-          </a>
+           target="_blank"
+           rel="noopener noreferrer"
+           className="inline-block px-6 py-3 bg-bg-transparent border-2 border-purple-500 rounded-lg p-g-purple-600 transition-colors duration-300"
+>
+  Check out my Resume
+</a>
           </div>
     </div>
   </section>
