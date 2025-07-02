@@ -3,7 +3,6 @@ import {
   FaChevronDown,
   FaChevronRight,
   FaGithub,
-  FaMedium,
 } from "react-icons/fa";
 import {
   PiFileSql,
@@ -18,16 +17,30 @@ import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const projects = [
   {
+    emoji: "💊📊",
+    title: "Medicare Drug Prescriptions & Cost Analysis – 2023",
+    image: `${import.meta.env.BASE_URL}assets/medicare.jpg`,
+    description:
+      "Conducted in-depth ETL and exploratory analysis of the 2023 Medicare Part D drug dataset using Python. Identified high-cost drugs, 65+ usage trends, and cost disparities. Created custom drug classifications and insights dashboards.",
+    tags: ["Python", "Jupyter", "NLP", "ETL", "Pandas", "Power BI"],
+    links: {
+      github: "https://github.com/monci-mamachan628/Drug_2023.git",
+    },
+    files: [
+      { name: "Medicare.ipynb", path: `${import.meta.env.BASE_URL}code/Medicare.ipynb` },
+      { name: "README6.md", path: `${import.meta.env.BASE_URL}code/README6.md` },
+      { name: "Dashboard.jpg", path: `${import.meta.env.BASE_URL}assets/medicare_dash.jpg` },
+    ],
+  },
+  {
     emoji: "📉💰",
     title: "Loan Default Detection",
     image: `${import.meta.env.BASE_URL}assets/loan.jpg`,
-
     description:
       "This project uses machine learning to predict the likelihood of a borrower defaulting on a loan.",
     tags: ["Python", "Logistic Regression", "Random Forest", "Pandas", "Sklearn"],
     links: {
       github: "https://github.com/monci-mamachan628/Loan_detect.git",
-      
     },
     files: [
       { name: "loan_model.ipynb", path: `${import.meta.env.BASE_URL}code/loan_model.ipynb` },
@@ -43,7 +56,6 @@ const projects = [
     tags: ["Python", "CNN", "Keras", "Pandas", "Medical Imaging"],
     links: {
       github: "https://github.com/monci-mamachan628/Pneumonia_.git",
-      
     },
     files: [
       { name: "pneumonia.ipynb", path: `${import.meta.env.BASE_URL}code/pneumonia.ipynb` },
@@ -59,7 +71,6 @@ const projects = [
     tags: ["Python", "RNN", "NLP", "TensorFlow"],
     links: {
       github: "https://github.com/monci-mamachan628/tweets.git",
-     
     },
     files: [
       { name: "tweet.ipynb", path: `${import.meta.env.BASE_URL}code/tweet.ipynb` },
@@ -88,11 +99,12 @@ const getFileIcon = (file) => {
   if (file.endsWith(".md")) return <PiFileText className="text-green-400" />;
   if (file.endsWith(".py")) return <PiFileCode className="text-yellow-300" />;
   if (file.endsWith(".ipynb")) return <PiFileCode className="text-pink-400" />;
+  if (file.match(/\.(jpg|jpeg|png|gif)$/i)) return <PiFileText className="text-blue-400" />;
   return <PiFileText />;
 };
 
 const FileExplorerProjects = () => {
-  const [openProject, setOpenProject] = useState(0); // Open first project by default
+  const [openProject, setOpenProject] = useState(0);
   const [selectedFile, setSelectedFile] = useState({
     ...projects[0].files[0],
     projectIdx: 0,
@@ -135,12 +147,8 @@ const FileExplorerProjects = () => {
                   return null;
                 })
                 .filter(Boolean);
-
               setRenderedNotebookCells(cellsToRender);
               setTextFileContent("");
-            } else if (selectedFile.name.endsWith(".md")) {
-              setTextFileContent(text);
-              setRenderedNotebookCells([]);
             } else {
               setTextFileContent(text);
               setRenderedNotebookCells([]);
@@ -170,9 +178,8 @@ const FileExplorerProjects = () => {
       <div className="w-[80px] hidden lg:block"></div>
 
       <div className="flex flex-1 ml-2 overflow-hidden">
-        {/* Explorer Panel */}
         <aside className="w-[280px] flex-shrink-0 border-r border-border bg-card px-4 py-4 rounded-tl-lg rounded-bl-lg">
-          <h2 className="text-xl font-bold mb-6 text-purple-400">📁 Projectss</h2>
+          <h2 className="text-xl font-bold mb-6 text-purple-400">📁 Projects</h2>
           <ul className="space-y-2">
             {projects.map((project, idx) => (
               <li key={idx}>
@@ -183,16 +190,8 @@ const FileExplorerProjects = () => {
                   }}
                   className="flex items-center gap-2 cursor-pointer hover:text-purple-300"
                 >
-                  {openProject === idx ? (
-                    <FaChevronDown size={12} />
-                  ) : (
-                    <FaChevronRight size={12} />
-                  )}
-                  {openProject === idx ? (
-                    <PiFolderOpen className="text-purple-400" />
-                  ) : (
-                    <PiFolder />
-                  )}
+                  {openProject === idx ? <FaChevronDown size={12} /> : <FaChevronRight size={12} />}
+                  {openProject === idx ? <PiFolderOpen className="text-purple-400" /> : <PiFolder />}
                   <span>{project.title}</span>
                 </div>
                 {openProject === idx && (
@@ -221,7 +220,6 @@ const FileExplorerProjects = () => {
           </ul>
         </aside>
 
-        {/* Main Viewer */}
         <main className="flex-1 p-6 overflow-y-auto">
           {openProject !== null && (
             <div className="mb-6">
@@ -251,11 +249,10 @@ const FileExplorerProjects = () => {
                   href={projects[openProject].links.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm px-4 py-2 bg-purple-700 rounded-full hover:bg-purple-700 border border-border"
+                  className="text-sm px-4 py-2 bg-purple-700 rounded-full hover:bg-purple-600 border border-border"
                 >
                   <FaGithub className="inline-block mr-1" /> GitHub
                 </a>
-                
               </div>
             </div>
           )}
@@ -265,7 +262,13 @@ const FileExplorerProjects = () => {
               <h4 className="text-purple-400 font-semibold mb-2">
                 {selectedFile.name}
               </h4>
-              {renderedNotebookCells.length > 0 ? (
+              {selectedFile.name.match(/\.(jpg|jpeg|png|gif)$/i) ? (
+                <img
+                  src={selectedFile.path}
+                  alt={selectedFile.name}
+                  className="w-full max-h-[500px] object-contain rounded"
+                />
+              ) : renderedNotebookCells.length > 0 ? (
                 renderedNotebookCells.map((cell, index) => (
                   <div key={cell.id || index} className="mb-4">
                     {cell.type === "markdown" && (
@@ -276,9 +279,7 @@ const FileExplorerProjects = () => {
                     {cell.type === "code" && (
                       <div className="code-cell">
                         <div className="flex items-center text-foreground mb-1">
-                          <span className="mr-2">
-                            In [{cell.execution_count ?? " "}]:
-                          </span>
+                          <span className="mr-2">In [{cell.execution_count ?? " "}]:</span>
                         </div>
                         <SyntaxHighlighter language="python" style={vscDarkPlus}>
                           {cell.source}
