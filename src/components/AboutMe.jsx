@@ -27,7 +27,7 @@ export const AboutMe = () => (
 
       <div className="flex justify-center mt-10">
         <a
-          href={`${import.meta.env.BASE_URL}Monci_Mamachan_cv.pdf`}
+          href={`${import.meta.env.BASE_URL}Monci-Mamachan-cv.pdf`}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block px-6 py-3 text-sm sm:text-base bg-transparent border-2 border-purple-500 text-purple-500 hover:bg-purple-600 hover:text-white rounded-lg transition-colors duration-300"
