@@ -203,6 +203,47 @@ export const Timeline = () => (
             </div>
           </div>
         </TimelineItem>
+        {/* Timeline Item - City Break Apartments */}
+<TimelineItem direction="left">
+  {/* Left: Experience Summary */}
+  <div className="w-1/2 pr-8 flex justify-end">
+    <div className="bg-transparent border-2 border-purple-400 rounded-xl p-6 text-foreground max-w-md text-center shadow-lg">
+      <h3 className="text-xl font-semibold mb-2 text-purple-400">
+        Reservation System Analyst – City Break Apartments
+      </h3>
+      <p className="text-sm text-muted-foreground text-justify">
+        Managed high-volume reservation data ensuring 100% pricing and inventory
+        accuracy, directly supporting revenue management and preventing booking
+        losses in a fast-paced environment. Communicated insights and operational
+        issues clearly with front-office and operations teams to maintain seamless
+        service delivery.
+      </p>
+    </div>
+  </div>
+
+  {/* Center: Icon */}
+  <div className="flex flex-col items-center">
+    <span className="bg-muted border-4 border-purple-400 rounded-full p-4 mb-2 text-purple-400 text-2xl shadow-lg">
+      <FaLightbulb />
+    </span>
+  </div>
+
+  {/* Right: Location and Duration */}
+  <div className="w-1/2 pl-8 flex justify-start">
+    <div className="text-sm text-purple-300 italic leading-snug">
+      City Break Apartments
+      <br />
+      <span className="not-italic text-purple-400 font-bold">
+        Dublin, Ireland
+      </span>
+      <br />
+      <span className="text-purple-400 font-semibold">
+        Aug 2025 – Jan 2026
+      </span>
+    </div>
+  </div>
+</TimelineItem>
+
       </div>
     </div>
   </section>
