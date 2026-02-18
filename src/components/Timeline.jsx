@@ -1,16 +1,35 @@
 import React from "react";
 import { FaGraduationCap, FaLightbulb } from "react-icons/fa";
+import { useInView } from "react-intersection-observer"; // Import useInView
+import { motion } from "framer-motion"; // Import motion from framer-motion
 
-// Timeline item without framer-motion for now (simpler)
-const TimelineItem = ({ children, direction }) => (
-  <div
-    className={`w-full flex items-center mb-16 relative z-10 ${
-      direction === "left" ? "justify-end" : "justify-start"
-    }`}
-  >
-    {children}
-  </div>
-);
+// A reusable component for timeline items with scroll animation
+const TimelineItem = ({ children, direction }) => {
+  const { ref, inView } = useInView({
+    triggerOnce: false, // Animation triggers every time it enters the viewport
+    threshold: 0.3, // Percentage of the item visible to trigger the animation
+  });
+
+  const variants = {
+    hidden: { opacity: 0, x: direction === "left" ? -100 : 100 },
+    visible: { opacity: 1, x: 0 },
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      variants={variants}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className={`w-full flex items-center mb-16 relative z-10 ${
+        direction === "left" ? "justify-end" : "justify-start"
+      }`}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 export const Timeline = () => (
   <section id="Timeline" className="py-24 px-4 md:px-8 lg:px-32">
@@ -19,7 +38,6 @@ export const Timeline = () => (
         My Journey to <span className="text-foreground">Data</span>
       </h2>
       <div className="w-32 h-1 bg-purple-400 mx-auto mb-12 rounded"></div>
-
       <div className="relative flex flex-col items-center">
         {/* Vertical line */}
         <div
@@ -29,6 +47,7 @@ export const Timeline = () => (
 
         {/* Timeline Item 1 */}
         <TimelineItem direction="left">
+          {/* Left content */}
           <div className="w-5/12 pr-8 flex justify-end">
             <div className="bg-transparent border-2 border-purple-400 rounded-xl p-6 text-foreground max-w-md text-center shadow-lg">
               <h3 className="text-xl font-semibold mb-2 text-purple-400">
@@ -41,11 +60,16 @@ export const Timeline = () => (
               </p>
             </div>
           </div>
+
+          {/* Vertical line and icon */}
           <div className="w-2/12 flex flex-col items-center">
+            {/* Icon centered on vertical line */}
             <span className="bg-muted border-4 border-purple-400 rounded-full p-4 mb-2 text-purple-400 text-2xl shadow-lg z-10">
               <FaGraduationCap />
             </span>
           </div>
+
+          {/* University info to the right of the icon */}
           <div className="w-5/12 pl-4">
             <div className="text-sm text-purple-300 italic leading-snug">
               APJ Abdul Kalam Technological University
@@ -63,6 +87,7 @@ export const Timeline = () => (
 
         {/* Timeline Item 2 */}
         <TimelineItem direction="right">
+          {/* Left: University details */}
           <div className="w-1/2 pr-8 flex justify-end">
             <div className="text-sm text-purple-300 italic text-right leading-snug">
               University of Catania
@@ -76,11 +101,15 @@ export const Timeline = () => (
               </span>
             </div>
           </div>
+
+          {/* Center: Graduation cap icon (on vertical line) */}
           <div className="flex flex-col items-center">
             <span className="bg-muted border-4 border-purple-400 rounded-full p-4 mb-2 text-purple-400 text-2xl shadow-lg">
               <FaGraduationCap />
             </span>
           </div>
+
+          {/* Right: Degree box */}
           <div className="w-1/2 pl-8 flex justify-start">
             <div className="bg-transparent border-2 border-purple-400 rounded-xl p-6 text-foreground max-w-md text-center shadow-lg">
               <h3 className="text-xl font-semibold mb-2 text-purple-400">
@@ -96,8 +125,9 @@ export const Timeline = () => (
           </div>
         </TimelineItem>
 
-        {/* Internship STMicroelectronics */}
+        {/* Timeline Item - Internship at STMicroelectronics */}
         <TimelineItem direction="left">
+          {/* Left: Internship Summary */}
           <div className="w-1/2 pr-8 flex justify-end">
             <div className="bg-transparent border-2 border-purple-400 rounded-xl p-6 text-foreground max-w-md text-center shadow-lg">
               <h3 className="text-xl font-semibold mb-2 text-purple-400">
@@ -111,11 +141,15 @@ export const Timeline = () => (
               </p>
             </div>
           </div>
+
+          {/* Center: Icon */}
           <div className="flex flex-col items-center">
             <span className="bg-muted border-4 border-purple-400 rounded-full p-4 mb-2 text-purple-400 text-2xl shadow-lg">
               <FaLightbulb />
             </span>
           </div>
+
+          {/* Right: Location and Duration */}
           <div className="w-1/2 pl-8 flex justify-start">
             <div className="text-sm text-purple-300 italic leading-snug">
               STMicroelectronics
@@ -131,8 +165,9 @@ export const Timeline = () => (
           </div>
         </TimelineItem>
 
-        {/* MDB Financial Consultancy */}
+        {/* Timeline Item - MDB Financial Consultancy */}
         <TimelineItem direction="right">
+          {/* Left: Location and Duration */}
           <div className="w-1/2 pr-8 flex justify-end">
             <div className="text-sm text-purple-300 italic text-right leading-snug">
               MDB Financial Consultancy
@@ -146,11 +181,15 @@ export const Timeline = () => (
               </span>
             </div>
           </div>
+
+          {/* Center: Icon */}
           <div className="flex flex-col items-center">
             <span className="bg-muted border-4 border-purple-400 rounded-full p-4 mb-2 text-purple-400 text-2xl shadow-lg">
               <FaLightbulb />
             </span>
           </div>
+
+          {/* Right: Internship Summary */}
           <div className="w-1/2 pl-8 flex justify-start">
             <div className="bg-transparent border-2 border-purple-400 rounded-xl p-6 text-foreground max-w-md text-center shadow-lg">
               <h3 className="text-xl font-semibold mb-2 text-purple-400">
@@ -164,45 +203,7 @@ export const Timeline = () => (
             </div>
           </div>
         </TimelineItem>
-
-        {/* City Break Apartments - cleaned */}
-        <TimelineItem direction="left">
-          <div className="w-5/12 pr-8 flex justify-end">
-            <div className="bg-transparent border-2 border-purple-400 rounded-xl p-6 text-foreground max-w-md text-center shadow-lg">
-              <h3 className="text-xl font-semibold mb-2 text-purple-400">
-                Reservation System Analyst – City Break Apartments
-              </h3>
-              <p className="text-sm text-muted-foreground text-justify">
-                Managed high-volume reservation data ensuring 100% pricing and inventory
-                accuracy, directly supporting revenue management and preventing booking
-                losses in a fast-paced environment. Communicated insights and operational
-                issues clearly with front-office and operations teams to maintain seamless
-                service delivery.
-              </p>
-            </div>
-          </div>
-          <div className="w-2/12 flex flex-col items-center">
-            <span className="bg-muted border-4 border-purple-400 rounded-full p-4 mb-2 text-purple-400 text-2xl shadow-lg">
-              <FaLightbulb />
-            </span>
-          </div>
-          <div className="w-5/12 pl-4">
-            <div className="text-sm text-purple-300 italic leading-snug">
-              City Break Apartments
-              <br />
-              <span className="not-italic text-purple-400 font-bold">
-                Dublin, Ireland
-              </span>
-              <br />
-              <span className="text-purple-400 font-semibold">
-                Aug 2025 – Jan 2026
-              </span>
-            </div>
-          </div>
-        </TimelineItem>
-
       </div>
     </div>
   </section>
 );
-
