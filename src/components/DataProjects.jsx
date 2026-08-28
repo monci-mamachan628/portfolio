@@ -33,6 +33,22 @@ const projects = [
     ],
   },
   {
+    emoji: "🇮🇪🏥",
+    title: "Ireland's Healthcare Waiting List Crisis Analysis",
+    image: `${import.meta.env.BASE_URL}assets/images.jpg`,
+    description:
+      "Analysed Irish hospital waiting-list trends across outpatient, inpatient, and day-case services, with a focus on long-wait cohorts, specialty bottlenecks, and regional pressure.",
+    tags: ["Python", "Pandas", "Data Cleaning", "Healthcare Analytics", "Power BI"],
+    links: {
+      github: "https://github.com/monci-mamachan628/HSE_WAITING_LIST_ANALYTICS",
+    },
+    files: [
+      { name: "README7.md", path: `${import.meta.env.BASE_URL}code/README7.md` },
+      { name: "HSE_WAITING_LIST.ipynb", path: `${import.meta.env.BASE_URL}code/HSE_WAITING_LIST.ipynb` },  
+      { name: "Dashboard2.jpg", path: `${import.meta.env.BASE_URL}assets/HSESS.jpg` },  
+    ],
+  },
+  {
     emoji: "📉💰",
     title: "Loan Default Detection",
     image: `${import.meta.env.BASE_URL}assets/loan.jpg`,

@@ -9,19 +9,13 @@ export const AboutMe = () => (
 
       <div className="space-y-6 text-sm sm:text-base md:text-lg text-muted-foreground text-justify leading-relaxed">
         <p>
-          Hi, I’m <span className="text-purple-400 font-semibold">Monci Mamachan</span> — a data enthusiast with a keen interest in bridging technology, business, and analytics. I hold a <span className="text-purple-400 font-semibold">Master’s in Data Science for Management</span> and a <span className="text-purple-400 font-semibold">Bachelor’s in Computer Science Engineering</span>. I thrive on transforming complex data into actionable insights that drive real-world impact.
+          Hi, I’m <span className="text-purple-400 font-semibold">Monci Mamachan</span> — a data enthusiast bridging technology, business, and analytics. I hold a <span className="text-purple-400 font-semibold">Master’s in Data Science for Management</span> and a <span className="text-purple-400 font-semibold">Bachelor’s in Computer Science Engineering</span>.
         </p>
         <p>
-          My academic and professional path led me to <span className="text-purple-400 font-semibold">STMicroelectronics</span>, where I contributed to the Artificial Intelligence team. This experience gave me hands-on exposure to <span className="text-purple-400 font-semibold">machine learning</span>, <span className="text-purple-400 font-semibold">data preprocessing</span>, and deploying AI solutions in real business scenarios.
+          I gained hands-on <span className="text-purple-400 font-semibold">AI/ML</span> experience at <span className="text-purple-400 font-semibold">STMicroelectronics</span>, working with data preprocessing and deploying AI solutions. I have also worked as a <span className="text-purple-400 font-semibold">Reservation System Analyst</span>. I’m proficient in <span className="text-purple-400 font-semibold">Python</span>, <span className="text-purple-400 font-semibold">SQL</span>, <span className="text-purple-400 font-semibold">Power BI</span>, and <span className="text-purple-400 font-semibold">Excel</span>, with a focus on data analysis, visualization, and predictive modeling.
         </p>
         <p>
-          I’m proficient in <span className="text-purple-400 font-semibold">Python</span>, <span className="text-purple-400 font-semibold">SQL</span>, <span className="text-purple-400 font-semibold">Power BI</span>, and <span className="text-purple-400 font-semibold">Excel</span>, with strong expertise in data analysis, visualization, and predictive modeling.
-        </p>
-        <p>
-          Driven by curiosity, I’m always eager to learn and experiment with emerging technologies. This website is a reflection of that passion—designed and developed using <span className="text-purple-400 font-semibold">JavaScript</span>, <span className="text-purple-400 font-semibold">HTML</span>, and <span className="text-purple-400 font-semibold">Tailwind CSS</span>.
-        </p>
-        <p>
-          I enjoy tackling challenges, extracting insights, and presenting results in a clear, impactful manner. Let’s connect and explore the world of data together!
+          This website reflects that passion, built with <span className="text-purple-400 font-semibold">JavaScript</span>, <span className="text-purple-400 font-semibold">HTML</span>, and <span className="text-purple-400 font-semibold">Tailwind CSS</span>. Let’s connect and explore the world of data together!
         </p>
       </div>
 

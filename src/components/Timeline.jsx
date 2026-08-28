@@ -234,7 +234,7 @@ export const Timeline = () => (
       City Break Apartments
       <br />
       <span className="not-italic text-purple-400 font-bold">
-        Italy
+        Dublin, Ireland
       </span>
       <br />
       <span className="text-purple-400 font-semibold">
